@@ -1,0 +1,63 @@
+<!doctype html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+    <div layout:fragment="content" class="container my-3">
+        <h2>차량수정</h2>
+
+        <!-- 차량번호 입력 폼 -->
+        <form action="/car/Mod" method="post" th:if="${car == null}">
+            <div class="mb-3">
+                <label for="carNumber" class="form-label">차량번호</label>
+                <input type="text" class="form-control" id="carNumber" name="carNumber" required>
+            </div>
+            <button type="submit" class="btn btn-primary">조회</button>
+        </form>
+
+        <!-- 오류 메시지 출력 -->
+        <div th:if="${errorMessage != null}" class="mt-3">
+            <p th:text="${errorMessage}" class="text-danger"></p>
+        </div>
+
+        <!-- 차량 정보 수정 폼 -->
+        <form action="/car/update" method="post" th:if="${car != null}">
+            <input type="hidden" name="carNumber" th:value="${car.carNumber}">
+            <div class="mb-3">
+                    <label for="carName" class="form-label">차량명</label>
+                    <select class="form-select" id="carName" name="carName" required>
+                        <option value="" disabled selected>차량명을 선택하세요</option>
+                        <option value="카니발">카니발</option>
+                        <option value="소나타">소나타</option>
+                        <option value="아반떼">아반떼</option>
+                        <option value="K5">K5</option>
+                        <option value="K7">K7</option>
+                        <option value="제네시스">제네시스</option>
+                        <option value="싼타페">싼타페</option>
+                        <option value="타이칸">타이칸</option>
+                        <option value="벤츠 S클래스">벤츠 S클래스</option>
+                        <option value="토레스">토레스</option>
+                        <option value="G90">G90</option>
+                        <option value="포터">포터</option>
+                        <option value="아우디">아우디</option>
+                        <option value="레이">레이</option>
+                    </select>
+                </div>
+            <div class="mb-3">
+                <label for="carColor" class="form-label">차색상</label>
+                <input type="text" class="form-control" id="carColor" name="carColor" th:value="${car.carColor}" required>
+            </div>
+            <div class="mb-3">
+                <label for="carSize" class="form-label">배기량</label>
+                <input type="text" class="form-control" id="carSize" name="carSize" th:value="${car.carSize}" required>
+            </div>
+            <div class="mb-3">
+                <label for="carMaker" class="form-label">제조사</label>
+                <input type="text" class="form-control" id="carMaker" name="carMaker" th:value="${car.carMaker}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">수정하기</button>
+        </form>
+
+        <!-- 성공 메시지 출력 -->
+        <div th:if="${successMessage != null}" class="mt-3">
+            <p th:text="${successMessage}" class="text-success"></p>
+        </div>
+    </div>
+</html>

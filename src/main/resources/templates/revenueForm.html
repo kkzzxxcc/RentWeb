@@ -1,0 +1,63 @@
+<!doctype html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<div layout:decorate="~{layout}">
+    <div layout:fragment="content" class="container my-3">
+        <h2>매출 조회</h2>
+        <form action="/revenue/revenueForm" method="post">
+            <div class="mb-3">
+                <label for="year" class="form-label">연도</label>
+                <select class="form-select" id="year" name="year">
+                    <option value="">연도를 선택하세요</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="month" class="form-label">월</label>
+                <select class="form-select" id="month" name="month">
+                    <option value="">월을 선택하세요</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">조회</button>
+
+
+            <!-- 매출 정보 출력 -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>연도</th>
+                    <th>월</th>
+                    <th>매출금액</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${year}"></td>
+                    <td th:text="${month}"></td>
+                    <td th:text="${totalRevenue}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- 에러 메시지 출력 -->
+            <p th:text="${errorMessage}" class="text-danger"></p>
+        </form>
+    </div>
+</div>
+</html>

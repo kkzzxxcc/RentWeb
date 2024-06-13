@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+    <div layout:decorate="~{layout}">
+        <div layout:fragment="content" class="container my-3">
+            <h2>차량 등록</h2>
+            <form action="/car/register" method="post">
+                <div class="mb-3">
+                    <label for="carNumber" class="form-label">차량번호</label>
+                    <input type="text" class="form-control" id="carNumber" name="carNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label for="carName" class="form-label">차량명</label>
+                    <select class="form-select" id="carName" name="carName" required>
+                        <option value=" " disabled selected>차량명을 선택하세요</option>
+                        <option value="K3">K3</option>
+                        <option value="K5">K5</option>
+                        <option value="K7">K7</option>
+                        <option value="K9">K9</option>
+                        <option value="AVANTE N">AVANTE N</option>
+                        <option value="SONATA">SONATA</option>
+                        <option value="SORENTO">SORENTO</option>
+                        <option value="PALISADE">PALISADE</option>
+                        <option value="SELTOS">SELTOS</option>
+                        <option value="CARNIVAL">CARNIVAL</option>
+                        <option value="GRANDEUR">GRANDEUR</option>
+                        <option value="G70">G70</option>
+                        <option value="G80">G80</option>
+                        <option value="G90">G90</option>
+                        <option value="A5">A5</option>
+                        <option value="A7">A7</option>
+                        <option value="Taycan">Taycan</option>
+                        <option value="718 Boxster">718 Boxster</option>
+                        <option value="911 Turbo">911 Turbo</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="carColor" class="form-label">차색상</label>
+                    <input type="text" class="form-control" id="carColor" name="carColor" required>
+                </div>
+                <div class="mb-3">
+                    <label for="carSize" class="form-label">배기량</label>
+                    <input type="text" class="form-control" id="carSize" name="carSize" required>
+                </div>
+                <div class="mb-3">
+                    <label for="carMaker" class="form-label">제조사</label>
+                    <input type="text" class="form-control" id="carMaker" name="carMaker" required>
+                </div>
+                <button type="submit" class="btn btn-primary">등록</button>
+                
+                <!-- 에러 메시지 출력 -->
+                <p th:text="${errorMessage}" class="text-danger"></p>
+            </form>
+        </div>
+    </div>
+</html>
